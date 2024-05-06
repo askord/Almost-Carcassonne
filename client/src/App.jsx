@@ -11,31 +11,31 @@ const App = () => {
   const { isUserLogged } = useContext(AuthContext);
 
   return (
-    <div className={style.wrapper}>
-      <SnackbarProvider />
-      <BrowserRouter>
-        {!isUserLogged && (
-          <nav className={style.nav}>
-            <Link to="sign-in">Вход</Link>
-            <Link to="sign-up">Регистрация</Link>
-          </nav>
-        )}
-        <Routes>
-          {isUserLogged ? (
-            <Route path="demo" element={<Demo />} />
-          ) : (
-            <>
-              <Route path="sign-in" element={<SignIn />} />
-              <Route path="sign-up" element={<SignUp />} />
-            </>
+      <div className={style.wrapper}>
+        <SnackbarProvider />
+        <BrowserRouter>
+          {!isUserLogged && (
+            <nav className={style.nav}>
+              <Link to="sign-in">Вход</Link>
+              <Link to="sign-up">Регистрация</Link>
+            </nav>
           )}
-          <Route  
-            path="*"
-            element={<Navigate to={isUserLogged ? "demo" : "sign-in"} />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </div>
+          <Routes>
+            {isUserLogged ? (
+              <Route path="demo" element={<Demo />} />
+            ) : (
+              <>
+                <Route path="sign-in" element={<SignIn />} />
+                <Route path="sign-up" element={<SignUp />} />
+              </>
+            )}
+            <Route  
+              path="*"
+              element={<Navigate to={isUserLogged ? "demo" : "sign-in"} />}
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
   );
 };
 

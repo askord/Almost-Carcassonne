@@ -30,8 +30,11 @@ app.use(
 
 app.use("/auth", AuthRootRouter);
 
-app.get("/resource/protected", TokenService.checkAccess, (_, res) => {
-  res.status(200).json("Добро пожаловать!" + Date.now());
+app.get("/resource/protected", TokenService.checkAccess, (req, res) => {
+  res.status(200).json(req.user["userName"]);
+//  console.log(res.user["userName"]);
+//  console.log(res.userName);
+  console.log(req.userName);
 });
 
 app.listen(PORT, () => {

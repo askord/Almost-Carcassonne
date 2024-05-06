@@ -23,7 +23,7 @@ class AuthController {
   }
 
   static async signUp(req, res) {
-    const { userName, password, role } = req.body;
+    const { userName, password, email, phone, gender, date } = req.body;
     const { fingerprint } = req;
 
     try {
@@ -31,8 +31,11 @@ class AuthController {
         await AuthService.signUp({
           userName,
           password,
-          role,
           fingerprint,
+          email, 
+          phone,
+          gender,
+          date
         });
 
       res.cookie("refreshToken", refreshToken, COOKIE_SETTINGS.REFRESH_TOKEN);

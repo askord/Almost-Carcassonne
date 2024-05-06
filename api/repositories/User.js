@@ -1,10 +1,10 @@
 import pool from "../db.js";
 
 class UserRepository {
-  static async createUser({ userName, hashedPassword, role }) {
+  static async createUser({ userName, hashedPassword, email, phone, gender, date }) {
     const response = await pool.query(
-      "INSERT INTO users (name, password, role) VALUES ($1, $2, $3) RETURNING *",
-      [userName, hashedPassword, role]
+      "INSERT INTO users (name, password, email, phone, gender, date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [userName, hashedPassword, email, phone, gender, date]
     );
 
     return response.rows[0];

@@ -25,7 +25,7 @@ export default function SignIn() {
   });
 
   return (
-    <form onSubmit={handleSubmit(handleSignIn)} className={style.wrapper}>
+    <form onSubmit={handleSubmit(handleSignIn)} className={style.wrapper} type='post'>
       <h2>Войти в аккаунт</h2>
       <Field
         name="userName"

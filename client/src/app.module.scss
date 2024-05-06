@@ -25,3 +25,11 @@
   align-items: center;
   height: 100vh;
 }
+
+body {
+  background-image: url("../../public/backfon.jpg"); /* Путь к вашему изображению */
+  background-size: cover; /* Масштабирование изображения по размеру контейнера */
+  background-position: center; /* Выравнивание изображения по центру */
+  position: relative;
+  z-index: 99;
+} 

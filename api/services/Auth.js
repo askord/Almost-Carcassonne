@@ -42,7 +42,7 @@ class AuthService {
     };
   }
 
-  static async signUp({ userName, password, fingerprint, role }) {
+  static async signUp({ userName, password, fingerprint, email, phone, gender, date }) {
     const userData = await UserRepository.getUserData(userName);
     if (userData) {
       throw new Conflict("Пользователь с таким именем уже существует");
@@ -52,10 +52,13 @@ class AuthService {
     const { id } = await UserRepository.createUser({
       userName,
       hashedPassword,
-      role,
+      email,
+      phone,
+      gender,
+      date
     });
 
-    const payload = { userName, role, id };
+    const payload = { userName, id };
 
     const accessToken = await TokenService.generateAccessToken(payload);
     const refreshToken = await TokenService.generateRefreshToken(payload);

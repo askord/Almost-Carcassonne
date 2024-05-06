@@ -14,21 +14,6 @@ const defaultValues = {
   role: 1,
 };
 
-const rolesList = [
-  {
-    id: 1,
-    title: "Администратор",
-  },
-  {
-    id: 2,
-    title: "Модератор",
-  },
-  {
-    id: 3,
-    title: "Пользователь",
-  },
-];
-
 const genderList = [
   {
     id: 1,
@@ -92,6 +77,14 @@ export default function SignUp() {
         error={Boolean(errors.userName)}
         helperText={errors.userName?.message}
       />
+      <Field
+        name="date"
+        register={register}
+        autoComplete="off"
+        placeholder="Дата рождения"
+        error={Boolean(errors.userName)}
+        helperText={errors.userName?.message}
+      />
       <Controller
         control={control}
         name="gender"
@@ -99,13 +92,7 @@ export default function SignUp() {
           <Select onChange={onChange} value={value} options={genderList} />
         )}
       />
-      <Controller
-        control={control}
-        name="role"
-        render={({ field: { onChange, value } }) => (
-          <Select onChange={onChange} value={value} options={rolesList} />
-        )}
-      />
+      
       <Button disabled={isSubmitting} type="submit">
         Зарегистрироваться
       </Button>

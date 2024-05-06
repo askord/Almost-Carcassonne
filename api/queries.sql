@@ -2,7 +2,11 @@ CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     name VARCHAR(25) UNIQUE NOT NULL,
     password VARCHAR(60) NOT NULL,
-    role SMALLINT NOT NULL
+    phone INT,
+    gender SMALLINT,
+    email VARCHAR(60) NOT NULL,
+    date SMALLINT
+
 );
 
 CREATE TABLE refresh_sessions(
