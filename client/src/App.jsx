@@ -6,18 +6,18 @@ import SignIn from "./pages/SignIn";
 import Demo from "./pages/Demo";
 import style from "./app.module.scss";
 import { AuthContext } from "./context/AuthContext";
+import Button from "./components/Button/button.module.scss";
 
 const App = () => {
   const { isUserLogged } = useContext(AuthContext);
-
   return (
       <div className={style.wrapper}>
         <SnackbarProvider />
         <BrowserRouter>
           {!isUserLogged && (
             <nav className={style.nav}>
-              <Link to="sign-in">Вход</Link>
-              <Link to="sign-up">Регистрация</Link>
+              <Link to="sign-in"><button className={Button.button}>Вход</button></Link>
+              <Link to="sign-up"><button className={Button.button}>Регистрация</button></Link>
             </nav>
           )}
           <Routes>

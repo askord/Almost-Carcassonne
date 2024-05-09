@@ -8,4 +8,5 @@ const pool = new pg.Pool({
   database: "carcasson",
 });
 
+
 export default pool;

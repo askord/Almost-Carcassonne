@@ -11,7 +11,6 @@ import Button from "../components/Button/Button";
 const defaultValues = {
   userName: "",
   password: "",
-  role: 1,
 };
 
 const genderList = [
@@ -66,24 +65,24 @@ export default function SignUp() {
         register={register}
         autoComplete="off"
         placeholder="Электронная почта"
-        error={Boolean(errors.userName)}
-        helperText={errors.userName?.message}
+        error={Boolean(errors.email)}
+        helperText={errors.email?.message}
       />
       <Field
         name="phone"
         register={register}
         autoComplete="off"
         placeholder="Телефон"
-        error={Boolean(errors.userName)}
-        helperText={errors.userName?.message}
+        error={Boolean(errors.phone)}
+        helperText={errors.phone?.message}
       />
       <Field
         name="date"
         register={register}
         autoComplete="off"
         placeholder="Дата рождения"
-        error={Boolean(errors.userName)}
-        helperText={errors.userName?.message}
+        error={Boolean(errors.date)}
+        helperText={errors.date?.message}
       />
       <Controller
         control={control}

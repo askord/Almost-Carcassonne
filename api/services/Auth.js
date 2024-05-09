@@ -42,7 +42,7 @@ class AuthService {
     };
   }
 
-  static async signUp({ userName, password, fingerprint, email, phone, gender, date }) {
+  static async signUp({ userName, password, fingerprint, email, phone, gender=1, date }) {
     const userData = await UserRepository.getUserData(userName);
     if (userData) {
       throw new Conflict("Пользователь с таким именем уже существует");

@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signInSchema } from "./validtionSchemas";
 import Field from "../components/Field/Field";
 import Button from "../components/Button/Button";
+import { useState } from "react";
 
 const defaultValues = {
   userName: "",
@@ -13,6 +14,13 @@ const defaultValues = {
 };
 
 export default function SignIn() {
+  // This variable determines whether password is shown or not
+  const [isShown, setIsSHown] = useState(false);
+
+// This function is called when the checkbox is checked or unchecked
+  const togglePassword = () => {
+    setIsSHown((isShown) => !isShown);
+  };
   const { handleSignIn } = useContext(AuthContext);
 
   const {
@@ -37,12 +45,19 @@ export default function SignIn() {
       />
       <Field
         name="password"
+        type={isShown ? "text" : "password"}
         register={register}
         autoComplete="off"
         placeholder="Пароль"
         error={Boolean(errors.password)}
         helperText={errors.password?.message}
       />
+      <Field
+        checked={isShown}
+        onChange={togglePassword}
+        name="checkpass"
+        register={register}
+        />
       <Button disabled={isSubmitting} type="submit">
         Войти
       </Button>
